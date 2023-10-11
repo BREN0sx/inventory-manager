@@ -18,7 +18,6 @@
     <h1><?php echo ucfirst(strtolower($session_name))?></h1>
     <a class="main-btn _modal_add_open" href="#"><span class="material-icons">add</span>Adicionar</a>
 </div>
-</div>
 
 <div class="table-container">
     <table>

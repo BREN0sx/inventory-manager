@@ -37,6 +37,26 @@ foreach ($products_group_data as $key => &$item_group) {
     );
 }
 ?>
+
+<div class="main-container">
+    <h1>Dashboard</h1>
+</div>
+
+<div class="primary-info"> 
+    <div class="info-container">
+        <div class="info-section">
+            <div class="label-box">
+            <span class="material-symbols-outlined">deployed_code</span>
+                Total<br>Cadastrados
+            </div>
+        </div>
+        <div class="info-box">
+            192
+        </div>
+
+    </div>
+</div>
+
 <script>
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -76,7 +96,7 @@ foreach ($products_group_data as $key => &$item_group) {
     <h4>Vencimento próximo</h4>
 
     <?php
-    $validity_query = "SELECT * FROM products WHERE validity_product IS NOT NULL ORDER BY validity_product ASC LIMIT 9";
+    $validity_query = "SELECT * FROM products WHERE validity_product IS NOT NULL ORDER BY validity_product ASC LIMIT 5";
     $validity_result = mysqli_query($db, $validity_query);
     if (mysqli_num_rows($validity_result) > 0) {
         /* echo "<ul>"; */
@@ -92,7 +112,7 @@ foreach ($products_group_data as $key => &$item_group) {
                 <div class="image-container" style="border-color: <?php echo ($validity_date >= $today) ? "#34d65c" : "#d63434" ?>">
                     <img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> 
                 </div>
-                <?php echo $row['name_product'];?>
+                <?php echo ucfirst(strtolower($row['name_product']));?>
             </div>
         </div>
 
@@ -131,7 +151,7 @@ foreach ($products_group_data as $key => &$item_group) {
                 $width_percentage = ($percentage / $max_percentage) * 100;
 
                 echo '<div class="bar">
-                        <div class="label">' . $label . '</div>
+                        <div class="label">' . ucfirst(strtolower($label)) . '</div>
                         <div class="bar-item">
                             <div class="bar-fill" style="width: ' . $width_percentage . '%; background-color: ' . $color . ';"></div>
                             <div class="label">' . $percentage . '% </div>
