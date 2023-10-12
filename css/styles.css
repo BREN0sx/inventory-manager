@@ -16,7 +16,8 @@ html {
 }
 
 body {
-    background: url(../img/background.png) center;
+    /* background: url(../img/background.png) center; */
+    background: #222325;
     margin-bottom: 3rem;
 }
 

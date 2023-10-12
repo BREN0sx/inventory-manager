@@ -47,3 +47,32 @@ session_start();
                 <img class="user-avatar" src="<?php echo $resp_profile?>"></img>
             </div>
         </nav>
+
+        <style>
+            .video-mask:before {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: linear-gradient(to bottom, rgb(255 255 255 / 0%) 80%, rgb(34 35 37));
+                z-index: -1;
+            }
+            #video-background {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -2;
+                top: 0;
+                left: 0;
+                filter: brightness(0.2) grayscale(1);
+                opacity: .2;
+            }
+        </style>
+        <div class="video-mask">
+        <video id="video-background" autoplay muted loop>
+				<source src="../img/background.mp4" type="video/mp4"/>
+			</video>
+        </div>
