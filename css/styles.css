@@ -366,20 +366,6 @@ td:nth-child(7){
     border-left: solid 1px #ffffff0d;
 }
 
-/* td {
-    border-top: solid 1px #232b35;
-    border-bottom: solid 1px #232b35;
-}
-
-td:last-child {
-    border-right: solid 1px #232b35;
-}
-
-td:first-child {
-    border-left: solid 1px #232b35;
-} */
-
-
 td img {
     border-radius: 17px;
     background: #fff;
