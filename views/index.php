@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<?php require '../includes/_db.php' ?>
-<?php require '../includes/_header.php' ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<html lang="pt-BR">
+<?php require '../includes/_db.php'?>
+<?php require '../includes/_header.php'?>
 <?php
 $session_group_query = "SELECT COUNT(*) AS amount_session FROM sessions";
 $session_group_result = mysqli_query($db, $session_group_query);
@@ -13,7 +11,7 @@ $resp_group_query = "SELECT COUNT(*) AS amount_resp FROM resp";
 $resp_group_result = mysqli_query($db, $resp_group_query);
 $resp_group_total = $resp_group_result->fetch_assoc()['amount_resp'];
 
-$products_group_query = "SELECT session_id, COUNT(*) AS amount FROM products GROUP BY session_id";
+$products_group_query = "SELECT session_id, SUM(amount_product) AS amount FROM products GROUP BY session_id";
 $products_group_result = mysqli_query($db, $products_group_query);
 
 $products_group_data = array();
@@ -45,7 +43,6 @@ foreach ($products_group_data as $key => &$item_group) {
     );
 }
 ?>
-
 <div class="main-container">
     <h1>Dashboard</h1>
 </div>
@@ -227,7 +224,15 @@ foreach ($products_group_data as $key => &$item_group) {
 
                     $color = isset($colors[$key]) ? $colors[$key] : "#000000";
                     $label = $item["category"];
-                    $percentage = number_format($item["percentage"], 0);
+                    $percentage = $item["percentage"];
+
+                    if ($percentage >= 1) {
+                        $formattedPercentage = number_format($percentage, 0);
+                    } elseif ($percentage >= 0.1) {
+                        $formattedPercentage = number_format($percentage, 1);
+                    } else {
+                        $formattedPercentage = number_format($percentage, 2);
+                    }
                     $amount = $item["amount"];
 
                     $width_percentage = ($percentage / $max_percentage) * 100;
@@ -236,7 +241,7 @@ foreach ($products_group_data as $key => &$item_group) {
                             <div class="label">' . ucfirst(strtolower($label)) . '</div>
                             <div class="bar-item">
                                 <div class="bar-fill" style="width: ' . $width_percentage . '%; background-color: ' . $color . ';"></div>
-                                <div class="label">' . $percentage . '% </div>
+                                <div class="label">' . $formattedPercentage . '% </div>
                             </div>
                         </div>';  
                 }
@@ -262,5 +267,4 @@ foreach ($products_group_data as $key => &$item_group) {
         </div>
     </div>
 </section>
-    <?php require '../includes/_footer.php' ?>
 </html

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <?php require '../includes/_db.php'?>
 <?php require '../includes/_header.php'?>
 <?php require 'product_add.php'?>
@@ -43,6 +43,7 @@
                         $sessionQuery = "SELECT s.name_session FROM sessions s INNER JOIN products p ON s.session_id = p.session_id WHERE p.session_id = $session_id";
                         $sessionData = mysqli_query($db, $sessionQuery);
                         $sessionName = ($sessionData->num_rows > 0) ? $sessionData->fetch_assoc()['name_session'] : '';
+                        $sessionTag = substr($sessionName, 0, 1);
 
                         $validity_date = $row["validity_product"];
                         $today_date = date("Y-m-d");
@@ -60,7 +61,7 @@
             ?>
 
             <tr>
-            <td><?php echo $row['product_id'];?></td>
+            <td><?php echo $sessionTag, $row['product_id']?></td>
             <td><div class="product-item"><img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> <?php echo $row['name_product'];?></div></td>
             <td><?php echo $row['ci_product']; ?></td>
             <td><?php echo $row['amount_product']; ?></td>
@@ -90,9 +91,5 @@
 <?php
     }
 ?>
-
-
-<?php require '../includes/_footer.php' ?>
 <script src="../js/modal.js"></script>
-
 </html>
