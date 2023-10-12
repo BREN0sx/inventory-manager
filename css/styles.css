@@ -55,6 +55,11 @@ h1 {
     color: #ffff;
     font-weight: 800;
 }
+
+.nav-logo img {
+    width: 8rem;
+}
+
 .nav-btn {
     color: #667777;
     border: 1.5px solid #3a4655;
@@ -96,16 +101,25 @@ h1 {
 /* INFO BOX */
 
 .primary-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin: 0 6rem 3rem 6rem;
 }
 
 .primary-info .info-container {
-    background: linear-gradient(89deg, #18b35712, #18b35714);
+    background: linear-gradient(90deg, #18b35712, #18b3572b);
     display: flex;
     flex-direction: row;
-    width: 17rem;
+    width: 26%;
+    padding: 1.8rem;
+    border-radius: 25px;
+    margin-right: 0;
     justify-content: space-between;
-    padding: 1.8rem
+}
+
+.primary-info .info-container:last-child {
+    margin-right: 0;
 }
 
 .label-box {
@@ -162,8 +176,8 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: 17rem;
-    padding: 1rem 2rem;
+    height: 15rem;
+    padding: 1rem 2rem 0rem 2rem;
     background: #1C242E;
     border-radius: 20px;
 }
@@ -172,7 +186,8 @@ h4 {
     font-size: 14pt;
     font-weight: 500;
     color: #EDEDED;
-    margin-bottom: 1rem;
+    margin-top: .5rem;
+    margin-bottom: 1.2rem;
 }
 .charts {
     display: flex;
@@ -184,6 +199,7 @@ h4 {
     flex-direction: column;
     width: 100%
 }
+
 .bar {
     display: flex;
     flex-direction: column;
@@ -209,6 +225,49 @@ h4 {
     border-radius: 0 20px 20px 0;
     margin-right: 0.5rem;
 }
+
+.chart-02 {
+    transform: translateY(-1rem);
+}
+
+/* Charts empty */
+
+.chart-01.chart-empty {
+    width: 47% !important;
+}
+
+.chart-empty {
+    opacity: .6;
+}
+
+.chart-empty .label {
+    width: 4rem;
+    height: 0.8rem;
+    background: #3e3f41;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.chart-empty .bar {
+    margin-bottom: 20px;
+}
+
+.chart-empty .bar-fill {
+    width: 7rem;
+    height: 15px;
+    background-color: #3e3f41;
+    border-radius: 20px;
+    margin-right: 0.5rem;
+}
+
+
+.chart-empty.chart-02 {
+    width: 13rem;
+    height: 13rem;
+    border-radius: 10rem;
+    background: #222931;
+    transform: translate(3.5rem, -2.5rem);
+} 
 
 /* TABLE */
 
@@ -308,6 +367,13 @@ td a:hover {
     opacity: .7;
 }
 
+td .validity-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+}
+
 th {
     color: #c2c2c282;
 	text-align: left;
@@ -315,6 +381,12 @@ th {
     font-weight: 400;
 }
 
+.empty-product {
+    display: flex;
+    margin-top: 2rem;
+    color: #c2c2c282;
+    justify-content: center;
+}
 
 /* validity */
 
@@ -329,17 +401,101 @@ th {
 
 .validity-card .product-item {
     margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.validity-card:nth-child(3) {
+    opacity: .5;
+}
+.validity-card:nth-child(4) {
+    opacity: .2;
 }
 
 .image-container {
     display: flex;
-    border: 2px solid #d63434;
+    border: 2px solid #464646;
     border-radius: 50px;
     overflow: hidden; 
     padding: 3px;
     margin-right: 0.5rem;
-  }
+}
 
+.success {
+    color: #34d65c !important;
+    border-color: #34d65c !important;
+}
+
+.warning {
+    color: #ffa700 !important;
+    border-color: #ffa700 !important;
+}
+
+.danger {
+    color: #ff3434 !important;
+    border-color: #ff3434 !important;
+}
+
+.validity-label {
+    display: flex;
+    align-items: center;
+}
+
+.validity-label {
+    color: #fff;
+}
+
+.validity-label p {
+    margin: 0;
+    font-size: 10pt;
+    color: #BCBEC2;
+}
+
+.validity-status {
+    color: #ff3434;
+    border: 1px solid #ff3434;
+    border-radius: 1rem;
+    padding: 0.4rem 1.2rem;
+}
+
+/* Hidden Card  */
+
+.hidden-empty.product-item {
+    opacity: .2;
+}
+
+.hidden-empty .img {
+    border-radius: 50px;
+    background: #3e3f41;
+    width: 2rem;
+    height: 2rem;
+    filter: grayscale(1);
+}
+
+.hidden-empty p:nth-child(1) {
+    width: 6rem;
+    height: .8rem;
+    background: #3e3f41;
+    border-radius: 1rem;
+    margin-bottom: .5rem;
+}
+.hidden-empty p:nth-child(2) {
+    width: 4rem;
+    height: .5rem;
+    background: #3e3f41;
+    border-radius: 1rem;
+}
+
+.hidden-empty .validity-status {
+    color: #3e3f41;
+    border-color: #3e3f41;
+    height: .6rem;
+    width: 4rem;
+    background: #3e3f41;
+}
+
+.hidden-empty .image-container {
+    border: none;
+}
 
   /* menu add */
 .add-section {
@@ -471,4 +627,8 @@ input[type="date"] {
     background-color: rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     z-index: 100;
+}
+
+footer {
+    height: 4rem;
 }

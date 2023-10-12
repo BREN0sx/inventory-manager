@@ -19,12 +19,12 @@ function product_add(){
     global $db;
     extract($_POST);
 
-    $file_size=$_FILES['foto']['size'];
+    $file_size = $_FILES['foto']['size'];
     
-    $file_up=fopen($_FILES['foto']['tmp_name'], 'r');
-    $image_bin=fread($file_up,$file_size);   
+    $file_up = fopen($_FILES['foto']['tmp_name'], 'r');
+    $image_bin = fread($file_up,$file_size);   
 
-    $image_product =mysqli_escape_string($db,$image_bin);
+    $image_product = mysqli_escape_string($db,$image_bin);
 
     $category_product = $_POST['category_product'];
                 
@@ -36,11 +36,11 @@ function product_add(){
     $resp_result = mysqli_query($db, $resp_query);
     $resp_id = mysqli_fetch_assoc($resp_result)['resp_id'];
 
-    $internal_code_product = isset($_POST['internal_code_product']) ? $_POST['internal_code_product'] : '';
+    $internal_code_product = isset($_POST['internal_code_product']) ? $_POST['internal_code_product'] : 0;
     $validity_date_product = isset($_POST['validity_date_product']) ? $_POST['validity_date_product'] : '';
 
     $consulta="INSERT INTO products (name_product, ci_product, amount_product, validity_product, image_product, session_id, resp_id)
-    VALUES ('$name_product', $internal_code_product, $amount_product, '$validity_date_product', '$image_product', $session_id, $resp_id);" ;
+    VALUES ('$name_product', '$internal_code_product', $amount_product, '$validity_date_product', '$image_product', $session_id, $resp_id);" ;
 
     mysqli_query($db, $consulta);
     
@@ -57,13 +57,14 @@ function product_edit(){
 
     if (empty($_FILES['foto']['name'])) {
         $image_product = $product_row['image_product'];
-        /* $image_product = mysqli_escape_string($db,$product_img_actual); */
-
     } else {
         $file_size = $_FILES['foto']['size'];
         $file_up = fopen($_FILES['foto']['tmp_name'], 'r');
         $image_bin = fread($file_up,$file_size); 
         $image_product = mysqli_escape_string($db,$image_bin);  
+
+        $image_send_query="UPDATE products SET image_product = '$image_product' WHERE product_id = $id";
+        mysqli_query($db, $image_send_query);
     }
 
     $consultaSessao = "SELECT session_id FROM sessions WHERE name_session = '$categorias'";
@@ -72,20 +73,21 @@ function product_edit(){
     $rowSessao = mysqli_fetch_assoc($resultadoSessao);
     $idSessao = $rowSessao['session_id'];
 
-    $internal_code_product = isset($_POST['internal_code_product']) ? $_POST['internal_code_product'] : 0;
+    $internal_code_product = isset($_POST['internal_code_product']) ? $_POST['internal_code_product'] : '';
     $validity_date_product = isset($_POST['validity_date_product']) ? $_POST['validity_date_product'] : '';
 
-    $consulta="UPDATE products SET name_product = '$name_product', amount_product = '$amount_product', ci_product = '$internal_code_product', validity_product = '$validity_date_product', image_product = '$image_product', session_id = '$idSessao' WHERE product_id = $id";
-
+    $consulta="UPDATE products SET name_product = '$name_product', amount_product = '$amount_product', ci_product = '$internal_code_product', validity_product = '$validity_date_product', session_id = '$idSessao' WHERE product_id = $id";
     mysqli_query($db, $consulta);
     header("Location: ../views/product_category.php?categoria=$idSessao");
 }
 function product_remove(){
     global $db;
     extract($_POST);
-    $id = $_POST['id'];
-    $consulta = "DELETE FROM products WHERE product_id = $id";
-    mysqli_query($db, $consulta);
-    header("Location: ../views/");
+
+    $product_id = $_POST['id'];
+    $category_id = $_POST['cat-id'];
+    $product_query = "DELETE FROM products WHERE product_id = $product_id";
+    mysqli_query($db, $product_query);
+    header("Location: ../views/product_category.php?categoria=$category_id");
 }
 ?>

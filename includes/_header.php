@@ -3,10 +3,8 @@ error_reporting(0);
 session_start();
 ?>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>INVENTÁRIO</title>
+    <title>Lab Stock</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,7 +17,7 @@ session_start();
     $categoria = $_GET['categoria'];
 ?>
         <nav class="navbar">
-            <div class="nav-logo"> INVENTÁRIO</div>
+            <div class="nav-logo"><img src="../img/LabStock.png" alt="LabStock"></div>
             <div class="nav-itens">
                 <a class="nav-btn <?php echo empty($categoria) ? "nav-active" : ""?>" href="index.php"> Dashboard</a>
                 <?php
@@ -35,11 +33,15 @@ session_start();
             </div>
             <div class="nav-user"> 
                 <?php
-                    $resp_query = "SELECT name_resp FROM resp WHERE active_resp = 1 LIMIT 1";
+                    $resp_query = "SELECT * FROM resp WHERE active_resp = 1 LIMIT 1";
                     $resp_result = mysqli_query($db, $resp_query);
-                    $resp_name = mysqli_fetch_assoc($resp_result)['name_resp'];
+                    
+                    $resp_data = mysqli_fetch_assoc($resp_result);
+
+                    $resp_name = $resp_data['name_resp'];
+                    $resp_profile = $resp_data['profile_resp'];
                 ?>
                 <span><?php echo $resp_name?></span>
-                <div class="user-avatar"></div>
+                <img class="user-avatar" src="<?php echo $resp_profile?>"></img>
             </div>
         </nav>

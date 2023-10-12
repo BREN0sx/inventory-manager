@@ -5,6 +5,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <?php
+$session_group_query = "SELECT COUNT(*) AS amount_session FROM sessions";
+$session_group_result = mysqli_query($db, $session_group_query);
+$session_group_total = $session_group_result->fetch_assoc()['amount_session'];
+
+$resp_group_query = "SELECT COUNT(*) AS amount_resp FROM resp";
+$resp_group_result = mysqli_query($db, $resp_group_query);
+$resp_group_total = $resp_group_result->fetch_assoc()['amount_resp'];
+
 $products_group_query = "SELECT session_id, COUNT(*) AS amount FROM products GROUP BY session_id";
 $products_group_result = mysqli_query($db, $products_group_query);
 
@@ -51,9 +59,30 @@ foreach ($products_group_data as $key => &$item_group) {
             </div>
         </div>
         <div class="info-box">
-            192
+            <?php echo $products_group_total;?>
         </div>
-
+    </div>
+    <div class="info-container">
+        <div class="info-section">
+            <div class="label-box">
+            <span class="material-symbols-outlined">dehaze</span>
+                Total<br>Categorias
+            </div>
+        </div>
+        <div class="info-box">
+            <?php echo $session_group_total;?>
+        </div>
+    </div>
+    <div class="info-container">
+        <div class="info-section">
+            <div class="label-box">
+            <span class="material-icons">person</span>
+                Total<br>Gerenciadores
+            </div>
+        </div>
+        <div class="info-box">
+            <?php echo $resp_group_total;?>
+        </div>
     </div>
 </div>
 
@@ -92,77 +121,144 @@ foreach ($products_group_data as $key => &$item_group) {
 </script>
 
 <section class="info">
+<div class="info-hidden">
+</div>
 <div class="info-container">
-    <h4>Vencimento próximo</h4>
 
+    <h4>Próximos vencimentos</h4>
+    <div class="validity-card">
     <?php
-    $validity_query = "SELECT * FROM products WHERE validity_product IS NOT NULL ORDER BY validity_product ASC LIMIT 5";
+    $validity_query = "SELECT * FROM products WHERE validity_product <> '0000-00-00' ORDER BY validity_product ASC LIMIT 3";
     $validity_result = mysqli_query($db, $validity_query);
+    $count_while = 3;
     if (mysqli_num_rows($validity_result) > 0) {
-        /* echo "<ul>"; */
     while ($row = mysqli_fetch_assoc($validity_result)) {
+        $count_while--;
         $product_name = $row["name_product"];
         $validity_date = $row["validity_product"];
-        $today = date("Y-m-d");
-        if ($validity_date !== '0000-00-00') {
+        $today_date = date("Y-m-d");
+
+        $today_time = time();
+        $validity_time = strtotime($validity_date);
+        $variation_time = ceil(($today_time - $validity_time) / (60 * 60 * 24));
+
+        $status_type = ($validity_date >= $today_date) ? ($variation_time >= -1 ? "warning" : "success") : "danger";
+        
+        $session_id = $row['session_id'];
+        $sessionQuery = "SELECT * FROM sessions WHERE session_id = $session_id";
+        $sessionData = mysqli_fetch_assoc(mysqli_query($db, $sessionQuery));
         ?>
 
-        <div class="validity-card">
+        
             <div class="product-item">
-                <div class="image-container" style="border-color: <?php echo ($validity_date >= $today) ? "#34d65c" : "#d63434" ?>">
-                    <img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> 
+                <div class="validity-label">
+                    <div class="image-container <?php echo $status_type;?>">
+                        <img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> 
+                    </div>
+                    <span>
+                        <?php echo ucfirst(strtolower($row['name_product']));?>
+                        <p><?php echo ucfirst(strtolower($sessionData['name_session']))?></p>
+                    </span>
                 </div>
-                <?php echo ucfirst(strtolower($row['name_product']));?>
+                <div class="validity-status <?php echo $status_type;?>"><?php echo date("d/m/y", strtotime($validity_date))?></div>
             </div>
-        </div>
+        
 
         <?php
-        }
-        /* if ($validity_date >= $today) {
-            // Produto válido
-            echo "<li>$product_name - Validade: $validity_date</li>";
-        } else {
-            // Produto vencido (em vermelho)
-            echo "<li style='color: red;'>$product_name - Validade: $validity_date (VENCIDO)</li>";
-        } */
     }
-    /* echo "</ul>"; */
-} else {
-    echo "Nenhum produto próximo da data de validade encontrado.";
 }
-    ?>
-    </div>
+    for ($i = 0; $i < $count_while; $i++) {
+        ?>
+
+        <div class="product-item hidden-empty">
+            <div class="validity-label hidden-empty">
+                <div class="image-container hidden-empty">
+                    <div class="img hidden-empty"></div>
+                </div>
+                <span class="hidden-empty">
+                    <p class="hidden-empty"></p>
+                    <p class="hidden-empty"></p>
+                </span>
+            </div>
+            <div class="validity-status hidden-empty"></div>
+        </div>
+        <?php
+    }
+?>
+</div>
+</div>
 </div>
 
 <div class="charts-container">
     <h4>Registros</h4>
     <div class="charts">
-        <div class="chart-01">
             <?php
-            foreach ($json_data as $key => $item) {
-                $max_percentage = max(array_column($json_data, 'percentage'));
-                $colors = ["#08A85F", "#BA6B0D", "#067DBF", "#BB195F", "#57FF33"];
+            if (empty($json_data)) {
+            ?>
+            <div class="chart-01 chart-empty">
+            
+            <div class="bar chart-empty">
+                <div class="label chart-empty"></div>
+                <div class="bar-item chart-empty">
+                    <div class="bar-fill chart-empty" style="width: 9rem"></div>
+                </div>
+            </div>
+            <div class="bar chart-empty">
+                <div class="label chart-empty"></div>
+                <div class="bar-item chart-empty">
+                    <div class="bar-fill chart-empty" style="width: 15rem"></div>
+                </div>
+            </div>
+            <div class="bar chart-empty">
+                <div class="label chart-empty"></div>
+                <div class="bar-item chart-empty">
+                    <div class="bar-fill chart-empty" style="width: 6rem"></div>
+                </div>
+            </div>
 
-                $color = isset($colors[$key]) ? $colors[$key] : "#000000";
-                $label = $item["category"];
-                $percentage = number_format($item["percentage"], 0);
-                $amount = $item["amount"];
+            <?php
+            } else {
+                ?>
+                <div class="chart-01">
+                <?php
+                foreach ($json_data as $key => $item) {
+                    $max_percentage = max(array_column($json_data, 'percentage'));
+                    $colors = ["#08A85F", "#BA6B0D", "#067DBF", "#BB195F", "#57FF33"];
 
-                $width_percentage = ($percentage / $max_percentage) * 100;
+                    $color = isset($colors[$key]) ? $colors[$key] : "#000000";
+                    $label = $item["category"];
+                    $percentage = number_format($item["percentage"], 0);
+                    $amount = $item["amount"];
 
-                echo '<div class="bar">
-                        <div class="label">' . ucfirst(strtolower($label)) . '</div>
-                        <div class="bar-item">
-                            <div class="bar-fill" style="width: ' . $width_percentage . '%; background-color: ' . $color . ';"></div>
-                            <div class="label">' . $percentage . '% </div>
-                        </div>
-                    </div>';  
+                    $width_percentage = ($percentage / $max_percentage) * 100;
+
+                    echo '<div class="bar">
+                            <div class="label">' . ucfirst(strtolower($label)) . '</div>
+                            <div class="bar-item">
+                                <div class="bar-fill" style="width: ' . $width_percentage . '%; background-color: ' . $color . ';"></div>
+                                <div class="label">' . $percentage . '% </div>
+                            </div>
+                        </div>';  
+                }
             }
             ?>
             </div>
+            
+            <?php
+                if (empty($json_data)) {
+            ?>
+            <div class="chart-02 chart-empty">
+            </div>
+            <?php
+                } else { 
+            ?>
             <div class="chart-02">
                 <div id="donut_single" style="width: 190px; height: 190px"></div>
             </div>
+            <?php
+                }
+            ?>
+            
         </div>
     </div>
 </section>
