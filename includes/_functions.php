@@ -11,7 +11,10 @@ if(isset($_POST['action'])){
         break;
         case 'product_add':
             product_add();
-        break;    
+        break;  
+        case 'change_active_resp':
+            change_active_resp();
+        break;   
     }
 }
 
@@ -89,5 +92,22 @@ function product_remove(){
     $product_query = "DELETE FROM products WHERE product_id = $product_id";
     mysqli_query($db, $product_query);
     header("Location: ../views/product_category.php?categoria=$category_id");
+}
+
+
+function change_active_resp(){
+    global $db;
+    extract($_POST);
+
+    $active_resp_id = $_POST['rrid'];
+    $inactive_resp_id = $_POST['srid'];
+
+    $unset_resp_query = "UPDATE resp SET active_resp = 0 WHERE resp_id = $active_resp_id";
+    mysqli_query($db, $unset_resp_query);
+
+    $set_resp_query = "UPDATE resp SET active_resp = 1 WHERE resp_id = $inactive_resp_id";
+    mysqli_query($db, $set_resp_query);
+
+    header("Location: ../views/index.php");
 }
 ?>

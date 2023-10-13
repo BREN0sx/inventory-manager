@@ -2,13 +2,13 @@
 
 * {
     font-family: 'Space Grotesk', sans-serif;
-    transition: all .2s;
+    transition: all .1s;
     text-decoration: none;
 }
 
 :root {
     --button-text-color: #151D26 ;
-    --button-bg-color: #ffa700; 
+    --button-bg-color: #12de7a; 
 }
   
 html {
@@ -16,8 +16,8 @@ html {
 }
 
 body {
-    /* background: url(../img/background.png) center; */
     background: #222325;
+    margin: 0;
     margin-bottom: 3rem;
 }
 
@@ -52,7 +52,7 @@ h1 {
     display: flex;
     align-items: center;
     overflow-x: hidden;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
     height: 7rem;
     padding: 0 3rem;
     justify-content: space-between;
@@ -63,7 +63,8 @@ h1 {
 }
 
 .nav-logo img {
-    width: 8rem;
+    box-shadow: 0 0 18px 12px #1B1C1D;
+    width: 9.5rem;
 }
 
 .nav-btn {
@@ -92,10 +93,29 @@ h1 {
 .nav-user {
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+.active-user-nav {
+    display: flex;
+    align-items: center;
 }
 .nav-user span {
     color: #C2C2C2;
     margin-right: .5rem
+}
+.expand-user-nav {
+    position: absolute;
+    display: flex;
+    background: #383838;
+    border-radius: 5px;
+    width: 8rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-6px, 37px);
+}
+.nav-user:hover {
+    cursor: pointer;
 }
 .user-avatar {
     width: 30px;
