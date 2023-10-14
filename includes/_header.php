@@ -52,61 +52,7 @@ session_start();
                     $resp_inactive_name = $resp_inactive_data['name_resp'];
                     $resp_inactive_profile = $resp_inactive_data['profile_resp'];
                 ?>
-                <style>
-                    .nav-user1 {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .nav-user1 span {
-                        font-size: 11pt;
-                    }
-                    .display-user-nav1 {
-                        margin-right: .1rem;
-                        margin-left: .1rem;
-                    }
-                    .display-user-nav1 {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 0.2rem;
-                    }
-                    .ativo {
-                        background: var(--button-bg-color);
-                        color: var(--button-text-color);
-                        display: flex;
-                        border-radius: 5rem;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .ativo span {
-                        margin-left: 0.2rem;
-                        margin-right: 0.3rem;
-                    }
-                    .inativo {
-                        color: #ababab;
-                        display: flex;
-                        border-radius: 5rem;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .inativo:hover img {
-                        filter: grayscale(1) brightness(.7);
-                        cursor: pointer;
-                    }
-                    .inativo span {
-                        margin-left: 0.2rem;
-                        margin-right: 0.3rem;
-                    }
-                    .inativo img {
-                        filter: grayscale(1) brightness(0.5);
-                    }
-                    .set-resp {
-                        background: transparent;
-                        border: none;
-                        padding: 0;
-                    }
-                </style>
+
                 <form action="../includes/_functions.php" method="POST"  enctype="multipart/form-data" style="display: flex;">
 
                 <input type="hidden" name="action" value="change_active_resp">
@@ -129,15 +75,6 @@ session_start();
                 </div>
                 <?php echo ($resp_active_id == 2) ? '' : '</button>'?>
                 </form>
-                <!-- <div class="active-user-nav">
-                    <span><php echo $resp_active_name?></span>
-                    <img class="user-avatar" src="<php echo $resp_active_profile?>"></img>
-                    <span class="material-symbols-outlined">expand_more</span>
-                </div>
-                <div class="expand-user-nav">
-                    <span><php echo $resp_inactive_name?></span> 
-                    <img class="user-avatar" src="<php echo $resp_inactive_profile?>"></img>
-                </div> -->
             </div>
         </nav>
         <script src="../js/changeDisplayUser.js"></script>

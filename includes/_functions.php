@@ -81,6 +81,7 @@ function product_edit(){
 
     $consulta="UPDATE products SET name_product = '$name_product', amount_product = '$amount_product', ci_product = '$internal_code_product', validity_product = '$validity_date_product', session_id = '$idSessao' WHERE product_id = $id";
     mysqli_query($db, $consulta);
+
     header("Location: ../views/product_category.php?categoria=$idSessao");
 }
 function product_remove(){

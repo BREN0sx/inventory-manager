@@ -44,7 +44,7 @@
         <input type="hidden" name="category_product" value="<?php echo $categoria; ?>">
 
         <input type="hidden" name="action" value="product_add">
-        <button class="main-btn" type="submit" class="btn btn-success"><span class="material-symbols-rounded">check</span>Salvar</button>
+        <button class="main-btn pAdd" type="submit" class="btn btn-success"><span class="material-symbols-rounded">check</span>Salvar</button>
     </div>
 </div>
 </form>

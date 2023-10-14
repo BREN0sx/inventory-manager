@@ -73,7 +73,7 @@ $products = mysqli_fetch_assoc($product_result);
         </div>
         <input type="hidden" name="action" value="product_edit">
         <input type="hidden" name="id" value="<?php echo $_GET['eid']; ?>">
-        <button type="submit" class="main-btn btn btn-success"><span class="material-symbols-rounded">check</span>Salvar</button>
+        <button type="submit" class="main-btn btn btn-success pEdit"><span class="material-symbols-rounded">check</span>Salvar</button>
     </div>
 </div>
 </form>

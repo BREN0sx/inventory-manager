@@ -43,6 +43,7 @@ foreach ($products_group_data as $key => &$item_group) {
     );
 }
 ?>
+
 <div class="main-container">
     <h1>Dashboard</h1>
 </div>
@@ -267,4 +268,4 @@ foreach ($products_group_data as $key => &$item_group) {
         </div>
     </div>
 </section>
-</html
+</html>
