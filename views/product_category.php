@@ -13,9 +13,7 @@
     $session_result = mysqli_query($db, $session_query);
     $session_name = mysqli_fetch_assoc($session_result)['name_session'];
 ?>
-<style>
-    
-</style>
+
 <div class="main-container">
     <h1><?php echo ucfirst(strtolower($session_name))?></h1>
     <div class="main-container-action">
@@ -72,7 +70,16 @@
         
     </div>
     <div class="viewer-name">
-        <?php echo $row['name_product'];?><p>#<?php echo $sessionTag, $row['product_id']?></p>
+        <?php 
+            if (strtolower($session_name) == 'químicos') {
+        ?>
+        <a href="https://www.ncbi.nlm.nih.gov/pccompound/?term=<?php echo $row['name_product'];?>" target="_blank"><?php echo $row['name_product'];?></a>
+        <?php 
+            } else {
+                echo $row['name_product'];
+            }
+        ?>
+        <p>#<?php echo $sessionTag, $row['product_id']?></p>
 
 
     </div>
@@ -154,7 +161,20 @@
 
             <tr>
             <td><?php echo $sessionTag, $row['product_id']?></td>
-            <td><div class="product-item"><img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> <?php echo $row['name_product'];?></div></td>
+            
+            <td>
+                <div class="product-item"><img src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem">
+                <?php 
+                    if (strtolower($session_name) == 'químicos') {
+                ?>
+                <a href="https://www.ncbi.nlm.nih.gov/pccompound/?term=<?php echo $row['name_product'];?>" target="_blank"><?php echo $row['name_product'];?></a>
+                <?php 
+                    } else {
+                        echo $row['name_product'];
+                    }
+                ?>
+                </div>
+            </td>
             <td><?php echo $row['ci_product']; ?></td>
             <td><?php echo $row['amount_product']; ?></td>
             <td><?php echo $row['label_id'] != '0' ? "Classe " . $row['label_id'] : "" ?></td>

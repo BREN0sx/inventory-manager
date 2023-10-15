@@ -389,6 +389,10 @@ td {
     align-items: center;
 }
 
+.product-item a {
+    color: #FFF;
+}
+
 tbody tr {
     backdrop-filter: blur(5px); 
     box-shadow: inset 0 0 0 1px #ffffff0d;
@@ -799,7 +803,7 @@ input[type="date"] {
     padding: 0.1rem 1rem;
     border-radius: 5px;
 }
-.viewer-name {
+.viewer-name, .viewer-name a {
     display: flex;
     color: #fff;
     font-weight: 500;
@@ -807,6 +811,11 @@ input[type="date"] {
     align-items: center;
     overflow: hidden;
 }
+
+.viewer-name a:hover {
+    opacity: .7;
+}
+
 .viewer-name p {
     margin-left: .2rem;
     color: #6E6F6F;
@@ -824,7 +833,7 @@ input[type="date"] {
 }
 .viewer-validity {
     font-size: 10pt;
-    color: #6E6F6F;
+    color: #6f6e6e54;
 }
 .viewer-btns .material-icons {
     color: #c2c2c282;
