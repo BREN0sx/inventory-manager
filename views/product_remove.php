@@ -1,5 +1,5 @@
 <?php
-$categoria = $_GET['categoria'];
+$categoria = $_GET['category'];
 
 $id = $_GET['did'];
 require_once ("../includes/_db.php");
@@ -19,7 +19,7 @@ $products = mysqli_fetch_assoc($product_result);
         </div>
         <input type="hidden" name="action" value="product_remove">
         <input type="hidden" name="id" value="<?php echo $_GET['did'];?>">
-        <input type="hidden" name="cat-id" value="<?php echo $_GET['categoria'];?>">
+        <input type="hidden" name="cat-id" value="<?php echo $_GET['category'];?>">
         <button class="main-btn trash pDel" type="submit" class="btn btn-success"><span class="material-symbols-rounded">check</span>Deletar</button>
     </div>
 </div>

@@ -19,6 +19,9 @@ body {
     background: #222325;
     margin: 0;
     margin-bottom: 3rem;
+    background-repeat: no-repeat;
+    background-image: url(../assets/gradient_interna.svg), url(../assets/gradient_interna.svg);
+    background-position: left -60% top -90%, right -60% top 80%;
 }
 
 ::-webkit-scrollbar-track {
@@ -392,7 +395,7 @@ tbody tr {
 }
 
 
-td:nth-child(7){
+td:nth-child(8){
     display: flex;
     justify-content: center;
     align-items: center;
@@ -604,10 +607,6 @@ td .danger {
     cursor: pointer;
 }
 
-/* .add-container.upload-logo {
-    width: 30%;
-} */
-
 .add-row {
     display: flex;
     justify-content: space-between;
@@ -616,9 +615,6 @@ td .danger {
 .add-field {
     display: flex;
     flex-direction: column;
-}
-
-.add-field:not(:last-child) {
     margin-bottom: 1rem;
 }
 
@@ -781,10 +777,17 @@ input[type="date"] {
     position: absolute;
     transform: translate(-39px, 5px);
 }
-.viewer-image img {
+.viewer-image .viewer-product_image {
     background: #fff;
     width: 8rem;
     height: 8rem;
+    border-radius: 15px;
+}
+.viewer-image .viewer-label img {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    transform: translate(0.3rem, 5.8rem);
     border-radius: 15px;
 }
 .viewer-amount {

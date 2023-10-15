@@ -42,12 +42,12 @@ function product_add(){
     $internal_code_product = isset($_POST['internal_code_product']) ? $_POST['internal_code_product'] : 0;
     $validity_date_product = isset($_POST['validity_date_product']) ? $_POST['validity_date_product'] : '';
 
-    $consulta="INSERT INTO products (name_product, ci_product, amount_product, validity_product, image_product, session_id, resp_id)
-    VALUES ('$name_product', '$internal_code_product', $amount_product, '$validity_date_product', '$image_product', $session_id, $resp_id);" ;
+    $consulta="INSERT INTO products (name_product, ci_product, amount_product, validity_product, image_product, session_id, resp_id, label_id)
+    VALUES ('$name_product', '$internal_code_product', $amount_product, '$validity_date_product', '$image_product', $session_id, $resp_id, $label_product);" ;
 
     mysqli_query($db, $consulta);
     
-    header("Location: ../views/product_category.php?categoria=$session_id");
+    header("Location: ../views/product_category.php?category=$session_id");
 }
 
 function product_edit(){
@@ -70,19 +70,13 @@ function product_edit(){
         mysqli_query($db, $image_send_query);
     }
 
-    $consultaSessao = "SELECT session_id FROM sessions WHERE name_session = '$categorias'";
-    $resultadoSessao = mysqli_query($db, $consultaSessao);
-
-    $rowSessao = mysqli_fetch_assoc($resultadoSessao);
-    $idSessao = $rowSessao['session_id'];
-
     $internal_code_product = isset($_POST['internal_code_product']) ? $_POST['internal_code_product'] : '';
     $validity_date_product = isset($_POST['validity_date_product']) ? $_POST['validity_date_product'] : '';
 
-    $consulta="UPDATE products SET name_product = '$name_product', amount_product = '$amount_product', ci_product = '$internal_code_product', validity_product = '$validity_date_product', session_id = '$idSessao' WHERE product_id = $id";
+    $consulta="UPDATE products SET name_product = '$name_product', amount_product = '$amount_product', ci_product = '$internal_code_product', validity_product = '$validity_date_product', label_id = '$label_product' WHERE product_id = $id";
     mysqli_query($db, $consulta);
 
-    header("Location: ../views/product_category.php?categoria=$idSessao");
+    header("Location: ../views/product_category.php?category=$product_session");
 }
 function product_remove(){
     global $db;
@@ -92,7 +86,7 @@ function product_remove(){
     $category_id = $_POST['cat-id'];
     $product_query = "DELETE FROM products WHERE product_id = $product_id";
     mysqli_query($db, $product_query);
-    header("Location: ../views/product_category.php?categoria=$category_id");
+    header("Location: ../views/product_category.php?category=$category_id");
 }
 
 

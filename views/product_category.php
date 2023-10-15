@@ -8,7 +8,7 @@
 <body>
 
 <?php
-    $categoria = $_GET['categoria'];
+    $categoria = $_GET['category'];
     $session_query = "SELECT name_session FROM sessions WHERE session_id = $categoria";
     $session_result = mysqli_query($db, $session_query);
     $session_name = mysqli_fetch_assoc($session_result)['name_session'];
@@ -58,7 +58,14 @@
     
     <div class="viewer-image">
         <b><?php echo $row['ci_product']; ?></b>
-        <img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> 
+        <?php 
+        if ($row['label_id'] != '0') {
+        ?>
+        <div class="viewer-label">
+            <img src="../assets/labels/c<?php echo strval(str_replace(".", "", $row['label_id']))?>.png" alt="">
+        </div>
+        <?php }?>
+        <img class="viewer-product_image" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> 
         <div class="viewer-amount">
             <span><?php echo $row['amount_product'];?></span>
         </div>
@@ -91,8 +98,8 @@
         ?>
         </div>
         <div class="viewer-btns">
-            <a class="_modal_edit_open" id="<?php echo $row['product_id']?>" href="product_category.php?categoria=<?php echo $categoria?>&eid=<?php echo $row['product_id']?>"><span class="material-icons">mode_edit</span></a>
-            <a class="_modal_delete_open" id="<?php echo $row['product_id']?>" href="product_category.php?categoria=<?php echo $categoria?>&did=<?php echo $row['product_id']?>"> <span class="material-icons">delete</span></a>
+            <a class="_modal_edit_open" id="<?php echo $row['product_id']?>" href="product_category.php?category=<?php echo $categoria?>&eid=<?php echo $row['product_id']?>"><span class="material-icons">mode_edit</span></a>
+            <a class="_modal_delete_open" id="<?php echo $row['product_id']?>" href="product_category.php?category=<?php echo $categoria?>&did=<?php echo $row['product_id']?>"> <span class="material-icons">delete</span></a>
         </div>
         </div>
     </div>
@@ -111,6 +118,7 @@
 				<th>Nome</th>
                 <th>#</th>
 				<th>Quantidade</th>
+				<th>Rótulo de risco</th>
 				<th>Validade</th>
 				<th>Adicionado por</th>
                 <th>Ação</th>
@@ -149,6 +157,7 @@
             <td><div class="product-item"><img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> <?php echo $row['name_product'];?></div></td>
             <td><?php echo $row['ci_product']; ?></td>
             <td><?php echo $row['amount_product']; ?></td>
+            <td><?php echo $row['label_id'] != '0' ? "Classe " . $row['label_id'] : "" ?></td>
             <td>
                 <?php
                 if ($validity_date != "0000-00-00")  {
@@ -161,8 +170,8 @@
                 ?>
             </td>
             <td><?php echo $respName; ?></td>
-            <td><a class="_modal_edit_open" id="<?php echo $row['product_id']?>" href="product_category.php?categoria=<?php echo $categoria?>&eid=<?php echo $row['product_id']?>"><span class="material-icons">mode_edit</span></a>
-            <a class="_modal_delete_open" id="<?php echo $row['product_id']?>" href="product_category.php?categoria=<?php echo $categoria?>&did=<?php echo $row['product_id']?>"> <span class="material-icons">delete</span></a></td>
+            <td><a class="_modal_edit_open" id="<?php echo $row['product_id']?>" href="product_category.php?category=<?php echo $categoria?>&eid=<?php echo $row['product_id']?>"><span class="material-icons">mode_edit</span></a>
+            <a class="_modal_delete_open" id="<?php echo $row['product_id']?>" href="product_category.php?category=<?php echo $categoria?>&did=<?php echo $row['product_id']?>"> <span class="material-icons">delete</span></a></td>
             
             <?php
                 }

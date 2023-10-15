@@ -4,7 +4,7 @@ session_start();
 ?>
 <head>
     <title>Lab Stock</title>
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -15,10 +15,10 @@ session_start();
 </head>
 <body>
 <?php 
-    $categoria = $_GET['categoria'];
+    $categoria = $_GET['category'];
 ?>
         <nav class="navbar">
-            <div class="nav-logo"><img src="../img/LabStock.gif" alt="LabStock"></div>
+            <div class="nav-logo"><img src="../assets/LabStock.gif" alt="LabStock"></div>
             <div class="nav-itens">
                 <a class="nav-btn <?php echo empty($categoria) ? "nav-active" : ""?>" href="index.php"> Dashboard</a>
                 <?php
@@ -29,7 +29,7 @@ session_start();
                     $session_id = $row['session_id'];
                     $name_session = $row['name_session'];
                 ?>
-                <a class="nav-btn <?php echo ($categoria == $session_id) ? "nav-active" : ""?>" href="product_category.php?categoria=<?php echo $session_id;?>"><?php echo ucfirst(strtolower($name_session))?></a>
+                <a class="nav-btn <?php echo ($categoria == $session_id) ? "nav-active" : ""?>" href="product_category.php?category=<?php echo $session_id;?>"><?php echo ucfirst(strtolower($name_session))?></a>
                 <?php } ?>
             </div>
             <div class="nav-user1"> 
@@ -104,6 +104,6 @@ session_start();
         </style>
         <div class="video-mask">
         <video id="video-background" autoplay muted loop>
-				<source src="../img/background.mp4" type="video/mp4"/>
+				<source src="../assets/background.mp4" type="video/mp4"/>
 			</video>
         </div>

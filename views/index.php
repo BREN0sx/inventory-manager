@@ -35,9 +35,13 @@ foreach ($products_group_data as $key => &$item_group) {
 
     $item_group['percentage'] = ($item_group['amount'] / $products_group_total) * 100;
 
+    $rounded_percentage = round(($item_group['amount'] / $products_group_total) * 100);
+    $item_group['rounded_percentage'] = $rounded_percentage;
+
     $json_data[] = array(
         'category' => $sessionName,
         'percentage' => $item_group['percentage'],
+        'rounded_percentage' => $item_group['rounded_percentage'],
         'amount' => $item_group['amount'],
         'color' => $color,
     );
@@ -90,13 +94,11 @@ foreach ($products_group_data as $key => &$item_group) {
 
       function drawChart() {
 
-        var jsonData = <?php echo json_encode($json_data); ?>;
-
         var data = google.visualization.arrayToDataTable([
         ['Category', 'Percentage', {type: 'string', role: 'style'}],
         <?php
             foreach ($json_data as $item) {
-                echo "['" . $item['category'] . "', " . $item['percentage'] . ", '" . $item['color'] . "'],";
+                echo "['" . $item['category'] . "', " . $item['rounded_percentage'] . ", '" . $item['color'] . "'],";
             }
         ?>
     ]);
@@ -110,7 +112,7 @@ foreach ($products_group_data as $key => &$item_group) {
           backgroundColor: 'none',
           pieSliceBorderColor: 'none',
           chartArea:{width:'90%',height:'90%'},
-          sliceVisibilityThreshold: .1
+          sliceVisibilityThreshold: 0
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
