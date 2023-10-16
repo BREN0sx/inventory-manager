@@ -3,7 +3,7 @@
 </div>
 
 ## Lab Stock - Sistema de Gerenciamento de Inventário de Laboratório Químico
-O **Lab Stock** é uma aplicação básica desenvolvida para otimizar o gerenciamento de inventário em laboratórios químicos. Através de uma interface intuitiva, oferece recursos robustos para controlar produtos químicos, vidrarias e equipamentos, proporcionando uma visão clara e organizada do estoque laboratorial.
+> O **Lab Stock** é uma aplicação básica desenvolvida para otimizar o gerenciamento de inventário em laboratórios químicos. Através de uma interface intuitiva, oferece recursos robustos para controlar produtos químicos, vidrarias e equipamentos, proporcionando uma visão clara e organizada do estoque laboratorial.
 
 <div align="center">
   <img src="assets/readme/page-1.png" alt="LabStock Logo" width="1000" height="auto">
