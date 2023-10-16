@@ -13,15 +13,14 @@
 
 ### 1.1 Objetivo
 
-O Lab Stock visa simplificar e aprimorar o controle de inventário em laboratórios químicos, fornecendo uma solução eficiente para o acompanhamento de produtos, vidrarias e equipamentos.
+Visa simplificar e aprimorar o controle de inventário em laboratórios químicos, fornecendo uma solução eficiente para o acompanhamento de produtos, vidrarias e equipamentos.
 
-### 1.2 Recursos Principais
+### 1.2 Recursos
 
-- **Dashboard Visual**: Apresenta gráficos e métricas importantes para uma visão rápida do estoque.
-  
-- **Gerenciamento de Produtos**: Permite cadastrar, editar e remover produtos com facilidade.
-  
-- **Alternância de Usuário**: Possibilita a troca rápida entre responsáveis ativos no laboratório.
+* [x] **Dashboard Visual**: Apresenta gráficos e métricas importantes para uma visão rápida do estoque.
+* [x] **Validade mais próxima**: Controle de Validade de Produtos
+* [x] **Gerenciamento de Produtos**: Permite cadastrar, editar e remover produtos com facilidade.  
+* [x] **Alternância de Usuário**: Possibilita a troca rápida entre responsáveis ativos no laboratório.
 
 ### 1.3 Modelo Lógico e Conceitual do Banco de Dados
 
@@ -38,10 +37,12 @@ O Lab Stock visa simplificar e aprimorar o controle de inventário em laboratór
 
 ### 2.2 Configuração do Ambiente
 
-1. Faça o download do projeto.
-2. Configure um servidor web.
-3. Importe o arquivo de banco de dados (`lab_stock.sql`) no MySQL.
-4. Atualize as configurações de conexão no arquivo `config.php`.
+1. Clone o projeto localmente
+```bash
+git clone https://github.com/BREN0sx/inventory-manager && cd inventory-manager
+```
+2. Configure um servidor web
+3. Importe o arquivo de banco de dados (`labStock.sql`) no MySQL
 
 ## 4. Tecnologias Utilizadas
 
