@@ -9,7 +9,7 @@
   <img src="assets/readme/page-1.png" alt="LabStock Logo" width="1000" height="auto">
 </div>
 
-## 1. Visão Geral
+## Visão Geral
 
 ### 1.1 Objetivo
 
@@ -26,7 +26,7 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 
 ![Modelo Lógico e Conceitual](link_para_imagem_modelo.png)
 
-## 2. Instalação
+## Instalação
 
 ### 2.1 Requisitos do Sistema
 
@@ -44,16 +44,7 @@ git clone https://github.com/BREN0sx/inventory-manager && cd inventory-manager
 2. Configure um servidor web
 3. Importe o arquivo de banco de dados (`labStock.sql`) no MySQL
 
-## 4. Tecnologias Utilizadas
-
-- PHP
-- MySQL
-- JavaScript
-- jQuery
-- HTML
-- CSS
-
-## 5. Notas Adicionais
+## Notas Adicionais
 
 Este projeto é uma simulação para fins educacionais e práticos. Qualquer semelhança com sistemas reais é coincidência. Este projeto não se destina a fins comerciais.
 
