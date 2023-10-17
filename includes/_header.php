@@ -33,6 +33,7 @@ session_start();
                 <?php } ?>
             </div>
             <div class="nav-user1"> 
+            <p id="pdf-creator-btn" class="material-symbols-outlined download-btn">download</p>
                 <?php
                     $resp_active_query = "SELECT * FROM resp WHERE active_resp = 1 LIMIT 1";
                     $resp_active_result = mysqli_query($db, $resp_active_query);
@@ -78,6 +79,7 @@ session_start();
             </div>
         </nav>
         <script src="../js/changeDisplayUser.js"></script>
+        <script src="../js/pdfCreator.js"></script>
 
         <style>
             .video-mask:before {

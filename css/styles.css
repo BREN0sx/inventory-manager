@@ -522,6 +522,11 @@ td .danger {
     color: #BCBEC2;
 }
 
+.validity-label span {
+    max-width: 22rem;
+    overflow: hidden;
+}
+
 .validity-status {
     color: #ff3434;
     border: 1px solid #ff3434;
@@ -679,11 +684,19 @@ input[type="date"] {
     cursor: pointer;
     border-radius: 3px;
 }
-
 .nav-user1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.nav-user1 p {
+    margin-right: 1rem;
+    font-size: 18pt;
+    color: #c2c2c282;
+}
+.download-btn:hover {
+    opacity: .7;
+    cursor: pointer;
 }
 .nav-user1 span {
     font-size: 11pt;
