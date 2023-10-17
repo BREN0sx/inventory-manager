@@ -11,25 +11,19 @@ class PDF extends FPDF
         $resp_query = "SELECT * FROM resp WHERE active_resp = 1 LIMIT 1";
         $resp_result = mysqli_query($db, $resp_query);
         $resp_name = mysqli_fetch_assoc($resp_result)['name_resp'];
-        $org = 'EEEP MANOEL MANO';
 
         $this->Image('../assets/pdf/logo.png', 30, 15, 50);
         $this->Image('../assets/pdf/background.png', 0, 0, $this->w, $this->h);
-
-        $this->SetFont('Arial','B',11);   
-        $this->Text(110,20, utf8_decode('Órgão: '));
-        $this->SetFont('Arial','',11);  
-        $this->Text(123,20, utf8_decode($org));
         
         $this->SetFont('Arial','B',11);   
-        $this->Text(110,24, utf8_decode('Responsável Autenticado: '));
+        $this->Text(110,22, utf8_decode('Responsável Autenticado: '));
         $this->SetFont('Arial','',11);  
-        $this->Text(159,24, utf8_decode($resp_name));
+        $this->Text(159,22, utf8_decode($resp_name));
 
         $this->SetFont('Arial','B',11);   
-        $this->Text(110,28, utf8_decode('Data do inventário: '));
+        $this->Text(110,26, utf8_decode('Data do inventário: '));
         $this->SetFont('Arial','',11);  
-        $this->Text(145,28, date('d/m/Y'));
+        $this->Text(145,26, date('d/m/Y'));
 
         $this->SetFont('Arial','B',12);
 
@@ -78,10 +72,10 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
     $pdf->SetFont('Arial', 'B', 8);
     $pdf->Cell(10, 7, utf8_decode('ID'), 1, 0, 'C', 1);
     $pdf->Cell(80, 7, utf8_decode('ITEM'), 1, 0, 'C', 1);
-    $pdf->Cell(30, 7, utf8_decode('COD'), 1, 0, 'C', 1);
+    $pdf->Cell(30, 7, utf8_decode('CÓDIGO'), 1, 0, 'C', 1);
     $pdf->Cell(25, 7, utf8_decode('VALIDADE'), 1, 0, 'C', 1);
-    $pdf->Cell(30, 7, utf8_decode('ADICIONADOR'), 1, 0, 'C', 1);
-    $pdf->Cell(15, 7, utf8_decode('QTDE'), 1, 1, 'C', 1);
+    $pdf->Cell(30, 7, utf8_decode('GESTOR'), 1, 0, 'C', 1);
+    $pdf->Cell(15, 7, utf8_decode('QUANT'), 1, 1, 'C', 1);
 
     $pdf->SetFont('Arial', '', 10);
     $pdf->SetTextColor(0, 0, 0);
@@ -104,7 +98,20 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
             $pdf->Cell(10, 10, $row['product_id'], 1, 0, 'C', 1);
             $pdf->Cell(80, 10, utf8_decode(substr($row['name_product'], 0, 37)), 1, 0, 'L', 1);
             $pdf->Cell(30, 10, utf8_decode($row['ci_product']), 1, 0, 'C', 1);
-            $pdf->Cell(25, 10, utf8_decode($row['validity_product'] == '0000-00-00' ? "" : date("d/m/Y", strtotime($row['validity_product']))), 1, 0, 'C', 1);
+            $actual_date = date('Y-m-d');
+
+            $validity_date = $row['validity_product'];
+
+            if ($validity_date != '0000-00-00' && $validity_date < $actual_date) {
+                $pdf->SetTextColor(255, 0, 0);
+            } else {
+                $pdf->SetTextColor(0, 0, 0);
+            }
+
+            $pdf->Cell(25, 10, utf8_decode($validity_date == '0000-00-00' ? "" : date("d/m/Y", strtotime($validity_date))), 1, 0, 'C', 1);
+
+            $pdf->SetTextColor(0, 0, 0);
+
             $pdf->Cell(30, 10, utf8_decode($resp_name), 1, 0, 'C', 1);
             $pdf->Cell(15, 10, utf8_decode($row['amount_product']), 1, 0, 'C', 1);
             $pdf->Ln();
