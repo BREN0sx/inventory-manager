@@ -52,3 +52,6 @@ Nágila Lopes
 ---
 
 **Lab Stock** - Gerencie seu inventário laboratorial de maneira eficiente e organizada.
+
+
+Ciro Lopes Lima Nobre
