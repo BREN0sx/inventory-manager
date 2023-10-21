@@ -23,10 +23,15 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 * [x] **Alternância de Usuário**: Possibilita a troca rápida entre responsáveis ativos no laboratório.
 
 ### 1.3 DFD
-
+<div align="center">
+  <img src="assets/readme/dbmodel-2.png" alt="Database Model" width="1000" height="auto">
+</div>
 <div align="center">
   <img src="assets/readme/dbmodel.png" alt="Database Model" width="1000" height="auto">
 </div>
+
+
+
 
 ## Instalação
 
