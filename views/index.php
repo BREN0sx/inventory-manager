@@ -30,7 +30,7 @@ foreach ($products_group_data as $key => &$item_group) {
     $sessionData = mysqli_query($db, $sessionQuery);
     $sessionName = ($sessionData->num_rows > 0) ? $sessionData->fetch_assoc()['name_session'] : '';
 
-    $colors = ["#08A85F", "#BA6B0D", "#067DBF", "#BB195F", "#57FF33"];
+    $colors = ["#00984E", "#00E567", "#63F298"];
     $color = isset($colors[$key]) ? $colors[$key] : "#000000";
 
     $item_group['percentage'] = ($item_group['amount'] / $products_group_total) * 100;
@@ -108,7 +108,7 @@ foreach ($products_group_data as $key => &$item_group) {
           pieSliceText: 'none',
           tooltip: { trigger: 'none' },
           legend: 'none',
-          colors: ["#08A85F", "#BA6B0D", "#067DBF", "#BB195F", "#57FF33"],
+          colors: ["#00984E", "#00E567", "#63F298"],
           backgroundColor: 'none',
           pieSliceBorderColor: 'none',
           chartArea:{width:'90%',height:'90%'},
@@ -223,7 +223,7 @@ foreach ($products_group_data as $key => &$item_group) {
                 <?php
                 foreach ($json_data as $key => $item) {
                     $max_percentage = max(array_column($json_data, 'percentage'));
-                    $colors = ["#08A85F", "#BA6B0D", "#067DBF", "#BB195F", "#57FF33"];
+                    $colors = ["#00984E", "#00E567", "#63F298"];
 
                     $color = isset($colors[$key]) ? $colors[$key] : "#000000";
                     $label = $item["category"];
