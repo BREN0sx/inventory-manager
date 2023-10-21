@@ -24,7 +24,9 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 
 ### 1.3 Modelo Lógico e Conceitual do Banco de Dados
 
-![Modelo Lógico e Conceitual](link_para_imagem_modelo.png)
+<div align="center">
+  <img src="assets/readme/dbmodel.png" alt="Database Model" width="1000" height="auto">
+</div>
 
 ## Instalação
 
@@ -47,13 +49,7 @@ git clone https://github.com/BREN0sx/inventory-manager && cd inventory-manager
 ## Notas Adicionais
 
 Este projeto é uma simulação para fins educacionais e práticos. Qualquer semelhança com sistemas reais é coincidência. Este projeto não se destina a fins comerciais.
-Nágila Lopes 
 
 ---
 
 **Lab Stock** - Gerencie seu inventário laboratorial de maneira eficiente e organizada.
-
-
-Ciro Lopes Lima Nobre
-Regilane
-Angélica 
