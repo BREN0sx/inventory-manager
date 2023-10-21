@@ -8,7 +8,7 @@
 
 :root {
     --button-text-color: #151D26 ;
-    --button-bg-color: #ffa700; 
+    --button-bg-color: #12DE94; 
 }
   
 html {
@@ -139,7 +139,7 @@ h1 {
 .primary-info .info-container {
     backdrop-filter: blur(5px);
     border: none;
-    background: linear-gradient(90deg, #18b35712, #18b3572b);
+    background: linear-gradient(90deg, #12DE9412, #12DE942b);
     display: flex;
     flex-direction: row;
     width: 26%;
@@ -155,15 +155,15 @@ h1 {
 
 .label-box {
     display: flex;
-    color: #aeafb2;
+    color: #dddddd;
     font-size: 11pt;
     flex-direction: column;
     font-weight: 500;
 }
 
 .label-box span {
-    color: #e0e1e2;
-    background: #18b3571c;
+    color: #12DE94;
+    background: #12DE941c;
     border-radius: 11px;
     padding: 6px;
     width: 1.56rem;
@@ -177,11 +177,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(314deg, #18b35700, #18b35717);
+    background: linear-gradient(314deg, #12DE9400, #12DE9417);
     width: 8rem;
     height: 8rem;
     border-radius: 1.8rem;
-    border: 2px solid #18b3572e;
+    border: 2px solid #12DE942e;
     font-size: 22pt;
     color: #fff;
     font-weight: 600;
