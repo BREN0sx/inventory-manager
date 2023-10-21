@@ -30,9 +30,6 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
   <img src="assets/readme/dbmodel.png" alt="Database Model" width="1000" height="auto">
 </div>
 
-
-
-
 ## Instalação
 
 ### 2.1 Requisitos do Sistema
@@ -49,7 +46,7 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 git clone https://github.com/BREN0sx/inventory-manager && cd inventory-manager
 ```
 2. Configure um servidor web
-3. Importe o arquivo de banco de dados (`labStock.sql`) no MySQL
+3. Importe o [arquivo sql](labStock.sql) no MySQL
 
 ## Notas Adicionais
 
