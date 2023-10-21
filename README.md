@@ -1,4 +1,4 @@
-<div align="center">
+ <div align="center">
   <img src="assets/Logo/LabStock-Main.png" alt="LabStock Logo" width="500" height="auto">
 </div>
 
@@ -53,3 +53,7 @@ Este projeto é uma simulação para fins educacionais e práticos. Qualquer sem
 ---
 
 **Lab Stock** - Gerencie seu inventário laboratorial de maneira eficiente e organizada.
+
+<div align="center">
+  <img src="assets/readme/page-2.png" alt="page-2" width="1000" height="auto">
+</div>
