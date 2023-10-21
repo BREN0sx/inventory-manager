@@ -46,8 +46,8 @@ INSERT INTO sessions (`name_session`) VALUES
   ('Equipamentos');
 
 INSERT INTO resp (`name_resp`, `profile_resp`, `active_resp`) VALUES
-  ('User_1', 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg', 0),
-  ('User_2', 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg', 1);
+  ('Arnaud Jr', 'https://i.imgur.com/2xWwhC7.png', 0),
+  ('Glaylton', 'https://i.imgur.com/U8YtEqu.png', 1);
 
 INSERT INTO labels (`label_id`, `name_label`) VALUES
   ('0', '0'),
