@@ -22,7 +22,7 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 * [x] **Gerenciamento de Produtos**: Permite cadastrar, editar e remover produtos com facilidade.  
 * [x] **Alternância de Usuário**: Possibilita a troca rápida entre responsáveis ativos no laboratório.
 
-### 1.3 Modelo Lógico e Conceitual do Banco de Dados
+### 1.3 DFD
 
 <div align="center">
   <img src="assets/readme/dbmodel.png" alt="Database Model" width="1000" height="auto">
