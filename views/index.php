@@ -153,7 +153,17 @@ foreach ($products_group_data as $key => &$item_group) {
             <div class="product-item">
                 <div class="validity-label">
                     <div class="image-container <?php echo $status_type;?>">
-                        <img width="100" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> 
+                        <?php
+                            $imageData = $row['image_product'];
+
+                            if (filter_var($imageData, FILTER_VALIDATE_URL)) {
+                                $imageUrl = 'src="' . $imageData . '"';
+                            } else {
+                                $imageUrl = 'src="data:image;base64,' . base64_encode($imageData) . '"';
+                            }
+
+                        ?>
+                        <img <?php echo $imageUrl; ?> alt="Imagem">
                     </div>
                     <span>
                         <?php echo ucfirst(strtolower($row['name_product']));?>

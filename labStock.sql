@@ -67,3 +67,6 @@ INSERT INTO labels (`label_id`, `name_label`) VALUES
   ('7', 'Materiais Radioativos'),
   ('8', 'Substâncias Corrosivas'),
   ('9', 'Substâncias e Artigos Perigosos Diversos');
+
+  -- Data Example
+  -- https://sourceb.in/h8V5Q7biX1

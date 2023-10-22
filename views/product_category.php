@@ -62,8 +62,22 @@
         <div class="viewer-label">
             <img src="../assets/labels/c<?php echo strval(str_replace(".", "", $row['label_id']))?>.png" alt="">
         </div>
-        <?php }?>
-        <img class="viewer-product_image" src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem"> 
+        <?php }
+        ?>
+
+        <?php
+            $imageData = $row['image_product'];
+
+            if (filter_var($imageData, FILTER_VALIDATE_URL)) {
+                $imageUrl = 'src="' . $imageData . '"';
+            } else {
+                $imageUrl = 'src="data:image;base64,' . base64_encode($imageData) . '"';
+            }
+
+        ?>
+        <img class="viewer-product_image" <?php echo $imageUrl; ?> alt="Imagem">
+
+
         <div class="viewer-amount">
             <span><?php echo $row['amount_product'];?></span>
         </div>
@@ -163,7 +177,19 @@
             <td><?php echo $sessionTag, $row['product_id']?></td>
             
             <td>
-                <div class="product-item"><img src="data:image;base64,<?php echo base64_encode($row['image_product']); ?>" alt="Imagem">
+                <?php
+                    $imageData = $row['image_product'];
+
+                    if (filter_var($imageData, FILTER_VALIDATE_URL)) {
+                        $imageUrl = 'src="' . $imageData . '"';
+                    } else {
+                        $imageUrl = 'src="data:image;base64,' . base64_encode($imageData) . '"';
+                    }
+
+                ?>
+                <div class="product-item">
+                <img <?php echo $imageUrl; ?> alt="Imagem">
+                
                 <?php 
                     if (strtolower($session_name) == 'químicos') {
                 ?>

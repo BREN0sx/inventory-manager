@@ -792,7 +792,6 @@ input[type="date"] {
             1px -1px 0px #FFF,                  
             1px 1px 0px #FFF;
     position: absolute;
-    transform: translate(-39px, 5px);
 }
 .viewer-image .viewer-product_image {
     background: #fff;
