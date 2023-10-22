@@ -24,13 +24,6 @@ class PDF extends FPDF
         $this->Text(110,26, utf8_decode('Data do inventário: '));
         $this->SetFont('Arial','',11);  
         $this->Text(145,26, date('d/m/Y'));
-
-        $this->SetFont('Arial','B',12);
-
-        $textWidth = $this->GetStringWidth('INVENTÁRIO DE BENS EM ALMOXARIFADO (ESTOQUE)');
-        $xPosition = ($this->GetPageWidth() - $textWidth) / 2;
-        $this->Text($xPosition, 55, utf8_decode('INVENTÁRIO DE BENS EM ALMOXARIFADO (ESTOQUE)'));
-        $this->Ln(45);
     }
     function Footer()
     {
@@ -51,7 +44,6 @@ $pdf->SetTopMargin(15);
 $pdf->SetLeftMargin(10);
 $pdf->SetRightMargin(10);
 
-
 while ($row_session = mysqli_fetch_assoc($session_result)) {
     $session_p = $row_session['session_id'];
     $session_name = $row_session['name_session'];
@@ -61,6 +53,13 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
 
     $pdf->AddPage();
 
+    $pdf->SetFont('Arial','B',12);
+
+    $textWidth = $pdf->GetStringWidth('INVENTÁRIO DE BENS EM ALMOXARIFADO (ESTOQUE)');
+    $xPosition = ($pdf->GetPageWidth() - $textWidth) / 2;
+    $pdf->Text($xPosition, 55, utf8_decode('INVENTÁRIO DE BENS EM ALMOXARIFADO (ESTOQUE)'));
+    $pdf->Ln(45);
+
     $pdf->SetFont('Arial', 'B', 11);
     $pdf->Cell(0, 10, utf8_decode('CATEGORIA - ' . mb_strtoupper($session_name, 'UTF-8')), 0, 1, 'C');
 
@@ -68,7 +67,7 @@ while ($row_session = mysqli_fetch_assoc($session_result)) {
     $pdf->SetDrawColor(0, 0, 0);
     $pdf->SetTextColor(255, 255, 255);
 
-    $pdf->Ln();
+    $pdf->Ln(4);
     $pdf->SetFont('Arial', 'B', 8);
     $pdf->Cell(10, 7, utf8_decode('ID'), 1, 0, 'C', 1);
     $pdf->Cell(80, 7, utf8_decode('ITEM'), 1, 0, 'C', 1);
