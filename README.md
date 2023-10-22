@@ -18,9 +18,10 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 ### 1.2 Recursos
 
 * [x] **Dashboard Visual**: Apresenta gráficos e métricas importantes para uma visão rápida do estoque.
-* [x] **Validade mais próxima**: Controle de Validade de Produtos
-* [x] **Gerenciamento de Produtos**: Permite cadastrar, editar e remover produtos com facilidade.  
+* [x] **Validade mais próxima**: Controle de Validade de Produtos.
+* [x] **Gerenciamento de Produtos**: Permite cadastrar, editar e remover produtos com facilidade.
 * [x] **Alternância de Usuário**: Possibilita a troca rápida entre responsáveis ativos no laboratório.
+* [x] **Relatório de Inventário**: Fornecimento em documento, das informações sobre os itens presentes no estoque, auxiliando na gestão adequada.
 
 ### 1.3 DFD
 <div align="center">
